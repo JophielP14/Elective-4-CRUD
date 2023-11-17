@@ -1,0 +1,73 @@
+{% extends 'base.html' %} 
+
+<!--Title-->
+{% block title %} Add member {% endblock title %}
+
+<!--Nav-->
+{% block navbar-content %} 
+Add Member
+{% endblock navbar-content %}
+
+<!--Page Content-->
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card card-body mt-5 {% block card-color %} border-dark text-light bg-secondary {% endblock card-color %}">
+                <span class="text-center">{% block card-title %} Enter Details for the Member Below {% endblock card-title %}</span>
+            </div>
+
+            <form id="addmemForm" {% block action %} action="{% url 'add_member' %}" {% endblock action %} method="POST" enctype="multipart/form-data" autocomplete="off" class="card p-3 border-dark mt-3">
+                {% csrf_token %}
+
+                {% block value-id %} {% endblock value-id %}
+                <div class="input-group mb-3">
+                    <span class="side-label btn border-secondary bg-light"></span>
+                    <input type="text" class="form-control" name="lastname" maxlength="40" placeholder="Last Name" required {% block value-lastname %}{% endblock value-lastname %}>
+                </div>
+                <div class="input-group mb-3">
+                    <span class="side-label btn border-secondary bg-light"></span>
+                    <input type="text" class="form-control" name="firstname" maxlength="40" placeholder="First Name" required {% block value-firstname %}{% endblock value-firstname %}>
+                </div>
+                <div class="input-group mb-3">
+                    <span class="side-label btn border-secondary bg-light"></span>
+                    <input type="text" class="form-control" name="group" maxlength="40" placeholder="Assigned Group" required {% block value-group %}{% endblock value-group %}>
+                </div>
+                <div class="input-group mb-3">
+                    <span class="side-label btn border-secondary bg-light"></span>
+                    <input type="date" class="form-control" name="date" maxlength="40" placeholder="Birthdate" required {% block value-date %}{% endblock value-date %}>
+                </div>
+                <div class="input-group mb-3">
+                    <span class="side-label btn border-secondary bg-light"></span>
+                    <input type="text" class="form-control" name="contract_duration" maxlength="40" placeholder="Contract Duration" required {% block value-contract_duration %}{% endblock value-contract_duration %}>
+                </div>
+                <div class="input-group mb-3">
+                    <label><span class="side-label btn border-secondary bg-light" style="border-radius: 4px 0px 0px 4px;"></span></label>
+                    <select class="form-select" name="gender" required>
+                        {% block option %}
+                        <option value="" hidden>Select Gender</option>
+                        {% endblock option %}
+                        <option disabled></option>
+                        <option>M</option>
+                        <option>F</option>
+                    </select>
+                </div>
+                <div class="mt-4" style="width: 100%;">
+                    <button type="submit" class="btn btn-secondary mb-3">
+                    {% block btn-action %}Add This Member{% endblock btn-action %}
+                    </button>
+                    <a href="{% url 'home' %}" class="btn btn-outline-dark mb-3 ms-2" style="width: 100px;" title="Back">Back
+                    </a>
+                </div>
+
+                
+            </form>
+
+        </div>
+    </div>
+
+</div>
+
+
+{% endblock content %}

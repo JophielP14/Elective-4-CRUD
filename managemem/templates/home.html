@@ -1,0 +1,50 @@
+{% extends 'base.html' %} 
+
+<!--Nav-->
+{% block navbar-content %} 
+Manage Member
+{% endblock navbar-content %}
+
+<!--Page Content-->
+
+{% block content %} 
+<div class="container">
+
+    <br><br>
+
+    <a href="{% url 'add_member' %}" class="btn btn-outline-secondary btn-sm">Add Member</a>
+
+    <div id="Body">
+        <table class="table table-bordered table-sm mt-4" style="text-align: center; font-size: 14px;">
+            <thread class="table-warning">
+                <tr>
+                    <th>Last Name</th>
+                    <th>First Name</th>
+                    <th>Birthdate</th>
+                    <th>Contract Duration</th>
+                    <th>Group Assigned</th>
+                    <th>Gender</th>
+                    <th colspan="2" style="width: 10%;">Actions</th>
+                </tr>
+            </thread>
+            {% for member in members %}
+            <tr>
+                <td>{{ member.lastname }}</td>
+                <td>{{ member.firstname }}</td>
+                <td>{{ member.date }}</td>
+                <td>{{ member.contract_duration }}</td>
+                <td>{{ member.group }}</td>
+                <td>{{ member.gender }}</td>
+                <td>
+                    <a href="/member/{{ member.id }}" class="btn btn-warning" title="Edit member">Edit</a>
+                </td>
+                <td>
+                    <a href="/delete_member/{{ member.id }}" class="btn btn-danger" title="Delete member">Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+
+</div>
+{% endblock content %}

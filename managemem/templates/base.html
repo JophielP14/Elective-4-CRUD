@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}"/>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <title>{% block title %} Home {% endblock title %}</title>
+</head>
+<body>
+    <div class = "wrapper">
+        <!-- NavBar -->
+        <header>
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+                <div class="col-sm">
+                    <a class="navbar-brand flex-grow-1" style="text-align: center; color: #fff; margin-left: 25px;">
+                        {% block navbar-content %} {% endblock navbar-content %}
+                    </a>
+                </div>
+            </nav>
+        </header>
+
+        <!-- Block cont(root) -->
+        {% block content %} {% endblock content %}
+
+
+    </div>
+
+    <!--Footer-->
+    <footer class="bg-dark text-center text-lg-start" id="=footer" style="color: #fff;">
+        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">&copy; {% now "Y" %} Copyright: 
+            <a class="text-light" href="#" style="text-decoration: none;">
+                <span class="text-warning">www.test.com</span>
+            </a>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    
+
+</body>
+</html>
